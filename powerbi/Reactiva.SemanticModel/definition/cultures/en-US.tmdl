@@ -1,0 +1,325 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "consumo_15min.hora": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "consumo_15min",
+			          "ConceptualProperty": "hora"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Hora": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "consumo_15min.potencia_media_kw": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "consumo_15min",
+			          "ConceptualProperty": "Potencia media kW"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Potencia activa (kW)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "consumo_15min.inductiva_kvar_medios": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "consumo_15min",
+			          "ConceptualProperty": "Inductiva kVAr medios"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Inductiva (kVAr)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "consumo_15min.capacitiva_kvar_medios": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "consumo_15min",
+			          "ConceptualProperty": "Capacitiva kVAr medios"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Capacitiva (kVAr)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.periodo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "periodo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Periodo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.mes_nombre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "mes_nombre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mes": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.cos_φ_actual": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "cos φ actual"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cos φ": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Actual": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.coste_actual_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "Coste actual €"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Coste €": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Actual": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.coste_con_50_kvar_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "Coste con 50 kVAr €"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "+50 kVAr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.coste_con_100_kvar_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "Coste con 100 kVAr €"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "+100 kVAr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.coste_con_150_kvar_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "Coste con 150 kVAr €"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "+150 kVAr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.cos_φ_con_50_kvar": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "cos φ con 50 kVAr"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "+50 kVAr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.cos_φ_con_100_kvar": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "cos φ con 100 kVAr"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "+100 kVAr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "factura_mensual.cos_φ_con_150_kvar": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "factura_mensual",
+			          "ConceptualProperty": "cos φ con 150 kVAr"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "+150 kVAr": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

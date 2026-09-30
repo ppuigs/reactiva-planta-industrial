@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Reactiva"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dc0ac5bf-62fa-4933-a25e-c4d57dbce867"
+  }
+}

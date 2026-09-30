@@ -1,0 +1,10 @@
+# Base de datos DuckDB: se regenera con crear_tablas.sql
+*.duckdb
+*.duckdb.wal
+
+# Archivos locales de Power BI (caché de datos y configuración de este ordenador)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Python
+__pycache__/

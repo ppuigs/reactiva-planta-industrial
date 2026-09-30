@@ -1,0 +1,224 @@
+table factura_mensual
+	lineageTag: b243dad8-ecd2-5871-9416-cff6fd3227a7
+
+	measure 'Coste actual €' = SUM(factura_mensual[coste_ind_eur])
+		formatString: #,0 €
+		lineageTag: 5ab965f9-4984-510e-8a32-077db95f506d
+
+	measure 'Coste con 50 kVAr €' = SUM(factura_mensual[coste_ind_50])
+		formatString: #,0 €
+		lineageTag: ae111b6d-4f0f-5150-8a55-b1c9a44616de
+
+	measure 'Coste con 100 kVAr €' = SUM(factura_mensual[coste_ind_100])
+		formatString: #,0 €
+		lineageTag: 2cd36b77-ceb7-590e-974a-73d698526247
+
+	measure 'Coste con 150 kVAr €' = SUM(factura_mensual[coste_ind_150])
+		formatString: #,0 €
+		lineageTag: dbc00fa3-e3e0-520d-8250-ac26e4ad422d
+
+	measure 'Ahorro con 100 kVAr €' = [Coste actual €] - [Coste con 100 kVAr €]
+		formatString: #,0 €
+		lineageTag: 99c157a3-1a5c-5bd1-b9d7-41fdac93279e
+
+	measure 'Energía activa MWh' = SUM(factura_mensual[activa_kwh]) / 1000
+		formatString: #,0
+		lineageTag: 017edfd9-7fb1-5885-b1dd-59faba1d5df4
+
+	measure 'Horas P6 que incumplen 0,98' = SUM(factura_mensual[horas_incumple_cap])
+		formatString: #,0
+		lineageTag: 449e3586-d01c-5096-ac5d-2588a80af57b
+
+	measure 'cos φ actual' = AVERAGE(factura_mensual[cos_phi_ind])
+		formatString: 0.000
+		lineageTag: e6648db7-d1c6-5606-874f-b4c784863993
+
+	measure 'cos φ con 50 kVAr' = AVERAGE(factura_mensual[cos_phi_ind_50])
+		formatString: 0.000
+		lineageTag: 537852a3-e435-5378-9b26-9da9cdabc79d
+
+	measure 'cos φ con 100 kVAr' = AVERAGE(factura_mensual[cos_phi_ind_100])
+		formatString: 0.000
+		lineageTag: ff0c970b-86a9-52b3-8108-f79db64d1074
+
+	measure 'cos φ con 150 kVAr' = AVERAGE(factura_mensual[cos_phi_ind_150])
+		formatString: 0.000
+		lineageTag: 537237d9-88e6-5fa2-8775-22fb92552831
+
+	measure 'Color cos φ' = VAR c = [cos φ actual] RETURN IF(ISBLANK(c), BLANK(), IF(c >= 0.95, "#CDEBD3", IF(c >= 0.80, "#FFE4A3", "#F6B3AE")))
+		lineageTag: e2d30836-246c-5787-b67f-482ff99254b2
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d757d17-f570-553a-b7b2-3befd6c75145
+		summarizeBy: none
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = User
+
+	column periodo
+		dataType: string
+		lineageTag: 075a1ac2-1291-5898-a8b8-4f9960babd9c
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = User
+
+	column activa_kwh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: a43c7682-7595-5aac-ab26-f640f54606e4
+		summarizeBy: none
+		sourceColumn: activa_kwh
+
+		annotation SummarizationSetBy = User
+
+	column reactiva_ind_kvarh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: af470efc-9422-5506-9daa-3bd43348cb11
+		summarizeBy: none
+		sourceColumn: reactiva_ind_kvarh
+
+		annotation SummarizationSetBy = User
+
+	column cos_phi_ind
+		dataType: double
+		formatString: 0.000
+		lineageTag: 63c06430-5d5a-5b27-895b-345ac55dc4fd
+		summarizeBy: none
+		sourceColumn: cos_phi_ind
+
+		annotation SummarizationSetBy = User
+
+	column exceso_ind_kvarh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 3eebc4b3-68d9-55c8-84ad-79c79e461b9f
+		summarizeBy: none
+		sourceColumn: exceso_ind_kvarh
+
+		annotation SummarizationSetBy = User
+
+	column precio_ind_eur_kvarh
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 56915fb8-4eae-58ca-bfc2-eb23f0eb6433
+		summarizeBy: none
+		sourceColumn: precio_ind_eur_kvarh
+
+		annotation SummarizationSetBy = User
+
+	column coste_ind_eur
+		dataType: double
+		formatString: #,0.00
+		lineageTag: bd42b795-f09a-54a6-a9a9-f30872fc9acb
+		summarizeBy: none
+		sourceColumn: coste_ind_eur
+
+		annotation SummarizationSetBy = User
+
+	column horas_incumple_cap
+		dataType: int64
+		formatString: 0
+		lineageTag: a636f453-aa63-5e79-ac59-0867ab76a822
+		summarizeBy: none
+		sourceColumn: horas_incumple_cap
+
+		annotation SummarizationSetBy = User
+
+	column exceso_cap_kvarh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 77db3f91-4e27-5b32-9470-236c3850844d
+		summarizeBy: none
+		sourceColumn: exceso_cap_kvarh
+
+		annotation SummarizationSetBy = User
+
+	column coste_cap_eur
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 3c950659-e8b0-59e8-98f5-6a63787d1af8
+		summarizeBy: none
+		sourceColumn: coste_cap_eur
+
+		annotation SummarizationSetBy = User
+
+	column cos_phi_ind_50
+		dataType: double
+		formatString: 0.000
+		lineageTag: dc1c8996-4a99-51a8-b691-8fc2d83cfa06
+		summarizeBy: none
+		sourceColumn: cos_phi_ind_50
+
+		annotation SummarizationSetBy = User
+
+	column coste_ind_50
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6b9f2818-7e59-522d-adf9-111a4e93fefc
+		summarizeBy: none
+		sourceColumn: coste_ind_50
+
+		annotation SummarizationSetBy = User
+
+	column cos_phi_ind_100
+		dataType: double
+		formatString: 0.000
+		lineageTag: 7abbf727-4442-5622-8d44-935321d179eb
+		summarizeBy: none
+		sourceColumn: cos_phi_ind_100
+
+		annotation SummarizationSetBy = User
+
+	column coste_ind_100
+		dataType: double
+		formatString: #,0.00
+		lineageTag: decd6a25-4554-5fbc-9e91-cac126ae21c8
+		summarizeBy: none
+		sourceColumn: coste_ind_100
+
+		annotation SummarizationSetBy = User
+
+	column cos_phi_ind_150
+		dataType: double
+		formatString: 0.000
+		lineageTag: 74ee26af-8aa2-5b5f-93d3-68e77d898617
+		summarizeBy: none
+		sourceColumn: cos_phi_ind_150
+
+		annotation SummarizationSetBy = User
+
+	column coste_ind_150
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 6c97ee26-fb15-5ca2-a419-9c032984be08
+		summarizeBy: none
+		sourceColumn: coste_ind_150
+
+		annotation SummarizationSetBy = User
+
+	column mes_nombre
+		dataType: string
+		lineageTag: 15de2b19-1393-5434-8c5e-dd96d5b835a3
+		summarizeBy: none
+		sourceColumn: mes_nombre
+		sortByColumn: mes
+
+		annotation SummarizationSetBy = User
+
+	partition factura_mensual = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "\factura_mensual.csv"), [Delimiter=",", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"mes", Int64.Type}, {"periodo", type text}, {"activa_kwh", type number}, {"reactiva_ind_kvarh", type number}, {"cos_phi_ind", type number}, {"exceso_ind_kvarh", type number}, {"precio_ind_eur_kvarh", type number}, {"coste_ind_eur", type number}, {"horas_incumple_cap", Int64.Type}, {"exceso_cap_kvarh", type number}, {"coste_cap_eur", type number}, {"cos_phi_ind_50", type number}, {"coste_ind_50", type number}, {"cos_phi_ind_100", type number}, {"coste_ind_100", type number}, {"cos_phi_ind_150", type number}, {"coste_ind_150", type number}}, "en-US"),
+				    Meses = Table.AddColumn(Typed, "mes_nombre", each {"Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"}{[mes] - 1}, type text)
+				in
+				    Meses
+
+	annotation PBI_ResultType = Table
+

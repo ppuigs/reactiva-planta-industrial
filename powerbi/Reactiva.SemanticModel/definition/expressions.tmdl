@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Users\jpuig\Proyectos\eficiencia-energetica-v2\datos" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: d4f6faa9-1c3d-5502-bce7-a0bcfb91c8ce
+
+	annotation PBI_ResultType = Text
+

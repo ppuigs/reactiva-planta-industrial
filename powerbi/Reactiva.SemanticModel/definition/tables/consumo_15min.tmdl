@@ -1,0 +1,133 @@
+table consumo_15min
+	lineageTag: 32e5c98d-3cc0-51d9-8f53-ac285711e7ca
+
+	measure 'Potencia media kW' = AVERAGE(consumo_15min[activa_kwh]) * 4
+		formatString: #,0
+		lineageTag: 2fdd3090-4408-5737-ae71-ddda20aa0f6c
+
+	measure 'Inductiva kVAr medios' = AVERAGE(consumo_15min[reactiva_ind_kvarh]) * 4
+		formatString: #,0
+		lineageTag: 5a3a574e-8855-5414-b03e-d197a51ff299
+
+	measure 'Capacitiva kVAr medios' = AVERAGE(consumo_15min[reactiva_cap_kvarh]) * 4
+		formatString: #,0
+		lineageTag: 3f22eb37-0675-50e1-97e7-cac638a34a6d
+
+	column inicio
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: aae9f70a-025f-520b-9f77-5452c1df67e2
+		summarizeBy: none
+		sourceColumn: inicio
+
+		annotation SummarizationSetBy = User
+
+	column fin
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: dea797be-514f-562c-9622-61e398391e2f
+		summarizeBy: none
+		sourceColumn: fin
+
+		annotation SummarizationSetBy = User
+
+	column activa_kwh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 05cd5cb6-b818-573d-ac14-1ae012eab500
+		summarizeBy: none
+		sourceColumn: activa_kwh
+
+		annotation SummarizationSetBy = User
+
+	column reactiva_ind_kvarh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 365eb9f4-fcd0-52d7-b427-022a9fca01f6
+		summarizeBy: none
+		sourceColumn: reactiva_ind_kvarh
+
+		annotation SummarizationSetBy = User
+
+	column reactiva_cap_kvarh
+		dataType: double
+		formatString: #,0.00
+		lineageTag: c2475793-530a-5bd9-882a-24614530b911
+		summarizeBy: none
+		sourceColumn: reactiva_cap_kvarh
+
+		annotation SummarizationSetBy = User
+
+	column fecha
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: a2ae8bef-a100-5836-82bf-eaffbc4c3ada
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = User
+
+	column mes
+		dataType: int64
+		formatString: 0
+		lineageTag: c28c35a1-f68d-5b8f-b921-148a33043ccd
+		summarizeBy: none
+		sourceColumn: mes
+
+		annotation SummarizationSetBy = User
+
+	column hora
+		dataType: int64
+		formatString: 0
+		lineageTag: 7524a434-9449-5239-b8f8-3c9b79c4c5bc
+		summarizeBy: none
+		sourceColumn: hora
+
+		annotation SummarizationSetBy = User
+
+	column temporada
+		dataType: string
+		lineageTag: ca0aad16-27d2-5e8c-8bfb-8fb453210a83
+		summarizeBy: none
+		sourceColumn: temporada
+
+		annotation SummarizationSetBy = User
+
+	column tipo_dia
+		dataType: string
+		lineageTag: 78158714-11dc-5d7e-b9cf-dc1ffa8f4e98
+		summarizeBy: none
+		sourceColumn: tipo_dia
+
+		annotation SummarizationSetBy = User
+
+	column periodo
+		dataType: string
+		lineageTag: 8771b558-e6dc-5492-b961-b2aac4852cac
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = User
+
+	column mes_nombre
+		dataType: string
+		lineageTag: da28975c-0963-5082-b66f-33d8892452eb
+		summarizeBy: none
+		sourceColumn: mes_nombre
+		sortByColumn: mes
+
+		annotation SummarizationSetBy = User
+
+	partition consumo_15min = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "\consumo_15min.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Headers, {{"inicio", type datetime}, {"fin", type datetime}, {"activa_kwh", type number}, {"reactiva_ind_kvarh", type number}, {"reactiva_cap_kvarh", type number}, {"fecha", type date}, {"mes", Int64.Type}, {"hora", Int64.Type}, {"temporada", type text}, {"tipo_dia", type text}, {"periodo", type text}}, "en-US"),
+				    Meses = Table.AddColumn(Typed, "mes_nombre", each {"Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"}{[mes] - 1}, type text)
+				in
+				    Meses
+
+	annotation PBI_ResultType = Table
+
